@@ -1,1 +1,1 @@
-# DBMS_Lab_10_partial
+# DBMS_Lab_10_final
