@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head> 
+    <title>DBMS Lab 10 Project ISP</title>
+    <style>
+        .heading{
+            background: #EAF6F6;
+            position: fixed;
+            top:0px;
+            left:0px;
+            text-align: center;
+            width: 100%;
+        }
+        .tab{
+            margin-top: 160px;
+            border-collapse: collapse;
+        }
+        h1{
+            color:#66BFBF;
+        }
+        h3{
+            color:#66BFBF;
+        }
+        .btn {
+            -webkit-border-radius: 28;
+            -moz-border-radius: 28;
+            border-radius: 28px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 18px;
+            background: #66BFBF;
+            padding: 5px 12px 4px 10px;
+            text-decoration: none;
+            }
+
+        .btn:hover {
+            background: #3cb0fd;
+            background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+            text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="heading">
+        <h1>Edit Web app using PostgreSQL</h1>
+        <h3>Changes which are made here will be reflected to pgadmin server</h3>
+        </div>
+        <form method="POST" action="/update/{{EmpModel.employee_id}}">
+            {% csrf_token %}
+
+        <table border="1" class="tab">
+            <tr>
+                <td>Employee ID</td>
+                <td><input type="text" name="employee_id" value="{{EmpModel.employee_id}}" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Employee Name</td>
+                <td><input type="text" name="employee_name" value="{{EmpModel.employee_name}}"></td>
+            </tr>
+
+            <tr>
+                <td>Contact Number</td>
+                <td><input type="text" name="contact_number" value="{{EmpModel.contact_number}}"></td>
+            </tr>
+
+            <tr>
+                <td>verification_id</td>
+                <td><input type="text" name="verification_id" value="{{EmpModel.verification_id}}"></td>
+            </tr>
+
+            <tr>
+                <td>branch_id</td>
+                <td><input type="text" name="branch_id" value="{{EmpModel.branch_id}}"></td>
+            </tr>
+
+            <tr>
+                <td>city_name</td>
+                <td><input type="text" name="city_name" value="{{EmpModel.city_name}}"></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Update Record"></td>
+                <td>
+                    {% if messages %}
+                    {% for mess in messages %}
+                    <b style="color:green;">{{mess}}</b>
+                    {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+
+        </table>
+        <br>
+        <br>
+        <br>
+        <a href="{% url 'showemp' %}" class="btn">Go to Home Page</a>
+    </form>
+    </center>
+</body>
+</html>
+

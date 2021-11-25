@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CRUD Operation with postgrsql</title>
+    <style>
+        body{
+/*background-image: url("https://ak.picdn.net/shutterstock/videos/1025127863/thumb/1.jpg");*/
+            background-color: white;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            
+           /* background-color: black;*/
+        }
+        .content{
+            background:rgb(5, 5, 5,0);
+            width: 50%;
+            padding: 50px;
+            margin-left: 150px;
+            line-height: 3em;
+            
+        }
+        .heading{
+            background: #EAF6F6;
+            position: fixed;
+            top:0px;
+            left:0px;
+            text-align: center;
+            width: 100%;
+            
+        }
+        h1{
+            color:#66BFBF;
+            margin-bottom: 30px;
+        }
+        .btn {
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 18px;
+        background: #66BFBF;
+        padding: 5px 12px 4px 10px;
+        text-decoration: none;
+        }
+        .bin{
+            background-image: url("https://www.gstatic.com/images/icons/material/system_gm/1x/delete_black_20dp.png");
+            background-size: 20px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .btn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="heading">
+        <h1>Welcome the Customer database</h1>
+        
+        <a href="{% url 'Insertcus' %}" class="btn"  style="position: relative;right:40px;"">Add a new Customer</a>
+        <a href="{% url 'showhome' %}" class="btn" style="position: relative; left:20px;">Go to home page </a>
+        </div>
+    </center>
+
+        <div class="content"  style=" font-size: 18x;">
+        
+            <table style="margin-top: 80px;">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>subscription_status</th>
+                    <th>Customer name</th>
+                    <th>Contact number</th>
+                    <th>Verification id</th>
+                    <th>User ID</th>
+                    <th>Pass key</th>
+                    <th>User e-Mail</th>
+                    <th>City name</th>
+
+                </tr>
+                {% for result in data %}
+                <tr>
+                    <td>{{result.customer_id}}</td>
+                    <td>{{result.subscription_status}}</td>
+                    <td>{{result.customer_name}}</td>
+                    <td>{{result.contact_number}}</td>
+                    <td>{{result.verification_id}}</td>
+                    <td>{{result.user_id}}</td>
+                    <td>{{result.pass_key}}</td>
+                    <td>{{result.user_email}}</td>
+                    <td>{{result.city_name}}</td>
+                    <td><a href="edit_cus/{{result.customer_id}}" style="color:#66BFBF">✎</a></td>
+                    <td><a href="delete_cus/{{result.customer_id}}" class="bin" onclick="return confirm('Are you sure want to delete the record?')">🗑️</a></td>
+                </tr>
+                {% endfor %}
+                
+            </table>
+        
+        </div>
+        <a href="{% url 'showhome' %}">Go to home page </a>
+    
+</body>
+
+</html>
